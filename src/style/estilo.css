@@ -1,3 +1,8 @@
+body {
+  /* background-image: url(../../img/bg.jpg); */
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
 .mosquito1 {
   width: 50px;
   height: 50px;
@@ -9,4 +14,30 @@
 .mosquito3 {
   width: 90px;
   height: 90px;
+}
+.ladoA {
+  transform: scaleX(1);
+}
+.ladoB {
+  transform: scaleX(-1);
+}
+.painel {
+  position: absolute;
+  width: 190px;
+  padding: 10px;
+  left: 0px;
+
+  /* fixa no canto inferior esquedor */
+  bottom: 0px;
+  border-top: solid 1px #FFF;
+  background-color:#FFF;
+  opacity: 0.7;
+}
+.vidas {
+  float: left;
+}
+.cronometro {
+  float: left;
+  font-size: 20px;
+  font-weight: bold;
 }
