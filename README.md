@@ -47,7 +47,18 @@ Fazendo as seguntes alterações:
  2 - Criar outra condição que o nosso limite seja ate tres:
 
 ```
-
+function posicaoRandonica() {
+  //remover elemento (caso exista)
+  if(document.getElementById("mosquito")) {
+    document.getElementById("mosquito").remove();
+    
+    if(vidas > 3) {
+      alert("Interroper o jogo!")
+    }
+    
+    document.getElementById("v" + vidas).src = "../img/coracao_vazio.png";
+    vidas++
+  }
 ```
 
 3

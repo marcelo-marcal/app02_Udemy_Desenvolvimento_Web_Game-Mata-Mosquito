@@ -1,6 +1,7 @@
 var altura = 0;
 var largura = 0;
 var vidas = 1;
+var tempo = 10;
 
 function ajustaTamanhoPalcoJogo() {
   altura = window.innerHeight;
@@ -13,10 +14,14 @@ function posicaoRandonica() {
   //remover elemento (caso exista)
   if(document.getElementById("mosquito")) {
     document.getElementById("mosquito").remove();
+    
+    if(vidas > 3) {
+      window.location.href ="fim_de_jogo.html"
+    }else {
+			document.getElementById('v' + vidas).src = "../img/coracao_vazio.png"
 
-    // console.log("Elemento selecionado foi: v" + vidas);
-    document.getElementById("v" + vidas).src = "../img/coracao_vazio.png";
-    vidas++
+			vidas++
+		}
   }
 
   var posicaoX = Math.floor(Math.random() * largura) - 90;
