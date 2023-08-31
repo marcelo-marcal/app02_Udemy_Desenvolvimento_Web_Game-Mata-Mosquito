@@ -55,10 +55,14 @@ function posicaoRandonica() {
     if(vidas > 3) {
       alert("Interroper o jogo!")
     }
-    
+
     document.getElementById("v" + vidas).src = "../img/coracao_vazio.png";
     vidas++
   }
 ```
 
-3
+3 - Estabelece o fluxo de game ove
+
+```
+
+```
