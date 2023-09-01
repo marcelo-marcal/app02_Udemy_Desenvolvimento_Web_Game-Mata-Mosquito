@@ -1,22 +1,39 @@
 var altura = 0;
 var largura = 0;
 var vidas = 1;
+var tempo = 10;
 
 function ajustaTamanhoPalcoJogo() {
   altura = window.innerHeight;
   largura = window.innerWidth;
+
   console.log(largura, altura);
 }
 ajustaTamanhoPalcoJogo();
+
+var cronometro = setInterval(function() {
+  tempo -= 1
+  if(tempo < 0) {
+    clearInterval(cronometro);
+    clearInterval(criarMosquito);
+    alert("vitoria")
+  } else {
+    document.getElementById("cronometro").innerHTML = tempo;
+  }
+}, 1000);
 
 function posicaoRandonica() {
   //remover elemento (caso exista)
   if(document.getElementById("mosquito")) {
     document.getElementById("mosquito").remove();
+    
+    if(vidas > 3) {
+      window.location.href ="../../fim_de_jogo.html"
+    }else {
+			document.getElementById('v' + vidas).src = "../img/coracao_vazio.png"
 
-    // console.log("Elemento selecionado foi: v" + vidas);
-    document.getElementById("v" + vidas).src = "../img/coracao_vazio.png";
-    vidas++
+			vidas++
+		}
   }
 
   var posicaoX = Math.floor(Math.random() * largura) - 90;
