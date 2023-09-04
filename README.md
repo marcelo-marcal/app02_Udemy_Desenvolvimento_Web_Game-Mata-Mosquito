@@ -65,8 +65,51 @@ function posicaoRandonica() {
 
 3 - Estabelece o fluxo de game ove
 
-```
+E dentro do controller vamos adicionar a seguinte linha de codigo. 
+```js
+  if(vidas > 3) {
+    window.location.href = "../src/controller/fim_de_jogo.html"
+  }else {
+		document.getElementById('v' + vidas).src = "../img/coracao_vazio.png"
 
+		vidas++
+	}
+```
+3.1 - Vamos cria o arquivo `html`, da pagina fim de jogo
+`fim_de_jogo.html`
+E pegando as características dos componentes do Bootstrap, para ajudar a encaixar as imagens e o botão que serão utilizados nessa página.
+Na pagina do `https://getbootstrap.com/`, vamos pegar o link cdn apenas do CSS only para utilizar em nosso codigo:
+`https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css`
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="../style/estilo.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <img src="../../img/game_over.png" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-dark btn-lg" onclick="window.location.href = '../app.html' ">Reiniciar</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
 ```
 
 4 - Criar o cronometro
