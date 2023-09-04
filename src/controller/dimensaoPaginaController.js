@@ -28,7 +28,7 @@ function posicaoRandonica() {
     document.getElementById("mosquito").remove();
     
     if(vidas > 3) {
-      window.location.href ="../../fim_de_jogo.html"
+      window.location.href = "../src/controller/fim_de_jogo.html"
     }else {
 			document.getElementById('v' + vidas).src = "../img/coracao_vazio.png"
 
