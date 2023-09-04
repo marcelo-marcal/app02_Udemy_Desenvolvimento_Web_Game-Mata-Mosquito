@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="../src/style/estilo.css" />
+  <script>
+    function iniciarJogo() {
+      var nivel = document.getElementById("nivel").value
+      if(nivel === "") {
+        alert("Selecione um nivel para iniciar um jogo")
+        return false
+      }
+      alert(nivel)
+    }
+  </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <img src="../img/game.png" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="d-flex justify-content-center">
+              <div class="mb-2">
+                <select class="form-control" id="nivel">
+                  <option value="">Selecione o nível</option>
+                  <option value="normal">Normal</option>
+                  <option value="dificil">Dificil</option>
+                  <option value="profissional">Profissional</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-danger btn-lg" onclick="iniciarJogo()">Iniciar Jogo</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
