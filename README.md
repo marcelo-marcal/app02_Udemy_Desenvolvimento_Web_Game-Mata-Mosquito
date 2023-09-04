@@ -155,3 +155,11 @@ var cronometro = setInterval(function() {
   }
 }, 1000);
 ```
+
+### 5 - Vitoria
+E so segui a mesma logica de fim de jogo
+
+### 6 Criação de uma pagina inicial para o jogo
+Cria uma novo arquivo `index.html`
+E copiar o conteudo do arquivo `vitoria.html`
+1 - substituir a imagem vitoria.

@@ -16,7 +16,7 @@ var cronometro = setInterval(function() {
   if(tempo < 0) {
     clearInterval(cronometro);
     clearInterval(criarMosquito);
-    alert("vitoria")
+    window.location.href = "../src/controller/vitoria.html";
   } else {
     document.getElementById("cronometro").innerHTML = tempo;
   }
@@ -52,13 +52,10 @@ function posicaoRandonica() {
   mosquito.style.position = "absolute";
   mosquito.id = "mosquito";
   mosquito.onclick = function() {
-    this.remove()
+    this.remove();
   }
 
-  document.body.appendChild(mosquito);
-  // tamanhoAleatorio();
-  // ladoAleatorio();
-  // console.log(ladoAleatorio());
+  document.body.appendChild(mosquito);  
 }
 
 function tamanhoAleatorio() {
