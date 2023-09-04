@@ -140,8 +140,9 @@ var cronometro = setInterval(function() {
   document.getElementById("cronometro").innerHTML = tempo;
 }, 1000);
 ```
-Para corrigi os valores negativos vamos criar uma logica.
-Fazendo um teste para verica se o tempo e menor que zero
+Para corrigir os valores negativos, vamos criar uma lógica.
+Fazendo um teste para verificar se o tempo é menor que zero.
+E precisamos limpar a ocorrência do `alert` com o `clearInterval(cronometro);` passando para dentro da função a variável `cronometro` que contém a referência para a execução dessa função.
 ```js
 var cronometro = setInterval(function() {
   tempo -= 1
