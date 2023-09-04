@@ -1,7 +1,9 @@
+<h1 align="center">
+    <img src=".mg/img_do_jogo.png" />
+</h1>
 ### app02_Udemy_Desenvolvimento_Web_Game-Mata-Mosquito
 
-app02_Udemy_Desenvolvimento_Web_Game-Mata-Mosquito
-
+Game Mata-Mosquito
 
 
 ### Controlando os pontos de vida
