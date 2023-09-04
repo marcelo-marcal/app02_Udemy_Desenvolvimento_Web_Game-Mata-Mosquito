@@ -44,9 +44,9 @@ if(document.getElementById("mosquito")) {
   }
 ```
 Fazendo as seguntes alterações:
- 1 - Criar uma variavel global `var vidas = 1;` que vai receber `1`.
+### 1 - Criar uma variavel global `var vidas = 1;` que vai receber `1`.
 
- 2 - Criar outra condição que o nosso limite seja ate tres:
+ ### 2 - Criar outra condição que o nosso limite seja ate tres:
 
 ```js
 function posicaoRandonica() {
@@ -63,7 +63,7 @@ function posicaoRandonica() {
   }
 ```
 
-3 - Estabelece o fluxo de game ove
+### 3 - Estabelece o fluxo de game ove
 
 E dentro do controller vamos adicionar a seguinte linha de codigo. 
 ```js
@@ -75,7 +75,7 @@ E dentro do controller vamos adicionar a seguinte linha de codigo.
 		vidas++
 	}
 ```
-3.1 - Vamos cria o arquivo `html`, da pagina fim de jogo
+### 3.1 - Vamos cria o arquivo `html`, da pagina fim de jogo
 `fim_de_jogo.html`
 E pegando as características dos componentes do Bootstrap, para ajudar a encaixar as imagens e o botão que serão utilizados nessa página.
 Na pagina do `https://getbootstrap.com/`, vamos pegar o link cdn apenas do CSS only para utilizar em nosso codigo:
@@ -112,7 +112,7 @@ Na pagina do `https://getbootstrap.com/`, vamos pegar o link cdn apenas do CSS o
 </html>
 ```
 
-4 - Criar o cronometro
+### 4 - Criar o cronometro
 ```js
 var cronometro = setInterval(function() {
   tempo -= 1
@@ -122,11 +122,35 @@ E agora e so adicionar no `app.html` o segunte codigo na tag
 ```html
 <div class="cronometro">Tempo restante: <span id="cronometro"></span></div>
 ```
+E mais a abaixo adicionar a seguinte linha:
+```html
+<script>
+  document.getElementById("cronometro").innerHTML = tempo;
+    
+  setInterval(function(){
+    posicaoRandonica();      
+  }, 2000);
+</script>
+```
 E no arquivo anterior:
 innerHTML = Tudo que esta entre as tag
 ```js
 var cronometro = setInterval(function() {
   tempo -= 1
   document.getElementById("cronometro").innerHTML = tempo;
+}, 1000);
+```
+Para corrigi os valores negativos vamos criar uma logica.
+Fazendo um teste para verica se o tempo e menor que zero
+```js
+var cronometro = setInterval(function() {
+  tempo -= 1
+  if(tempo < 0) {
+    clearInterval(cronometro);
+    clearInterval(criarMosquito);
+    alert("vitoria")
+  } else {
+    document.getElementById("cronometro").innerHTML = tempo;
+  }
 }, 1000);
 ```
