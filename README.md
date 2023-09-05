@@ -1,7 +1,10 @@
+<h1 align="center">
+    <img src="./mg/img_do_jogo.png" />
+</h1>
+
 ### app02_Udemy_Desenvolvimento_Web_Game-Mata-Mosquito
 
-app02_Udemy_Desenvolvimento_Web_Game-Mata-Mosquito
-
+Game Mata-Mosquito
 
 
 ### Controlando os pontos de vida
@@ -44,9 +47,9 @@ if(document.getElementById("mosquito")) {
   }
 ```
 Fazendo as seguntes alterações:
- 1 - Criar uma variavel global `var vidas = 1;` que vai receber `1`.
+### 1 - Criar uma variavel global `var vidas = 1;` que vai receber `1`.
 
- 2 - Criar outra condição que o nosso limite seja ate tres:
+ ### 2 - Criar outra condição que o nosso limite seja ate tres:
 
 ```js
 function posicaoRandonica() {
@@ -63,13 +66,56 @@ function posicaoRandonica() {
   }
 ```
 
-3 - Estabelece o fluxo de game ove
+### 3 - Estabelece o fluxo de game ove
 
+E dentro do controller vamos adicionar a seguinte linha de codigo. 
+```js
+  if(vidas > 3) {
+    window.location.href = "../src/controller/fim_de_jogo.html"
+  }else {
+		document.getElementById('v' + vidas).src = "../img/coracao_vazio.png"
+
+		vidas++
+	}
+```
+### 3.1 - Vamos cria o arquivo `html`, da pagina fim de jogo
+`fim_de_jogo.html`
+E pegando as características dos componentes do Bootstrap, para ajudar a encaixar as imagens e o botão que serão utilizados nessa página.
+Na pagina do `https://getbootstrap.com/`, vamos pegar o link cdn apenas do CSS only para utilizar em nosso codigo:
+`https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css`
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="../style/estilo.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <img src="../../img/game_over.png" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-dark btn-lg" onclick="window.location.href = '../app.html' ">Reiniciar</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>
 ```
 
-```
-
-4 - Criar o cronometro
+### 4 - Criar o cronometro
 ```js
 var cronometro = setInterval(function() {
   tempo -= 1
@@ -79,6 +125,16 @@ E agora e so adicionar no `app.html` o segunte codigo na tag
 ```html
 <div class="cronometro">Tempo restante: <span id="cronometro"></span></div>
 ```
+E mais a abaixo adicionar a seguinte linha:
+```html
+<script>
+  document.getElementById("cronometro").innerHTML = tempo;
+    
+  setInterval(function(){
+    posicaoRandonica();      
+  }, 2000);
+</script>
+```
 E no arquivo anterior:
 innerHTML = Tudo que esta entre as tag
 ```js
@@ -87,3 +143,26 @@ var cronometro = setInterval(function() {
   document.getElementById("cronometro").innerHTML = tempo;
 }, 1000);
 ```
+Para corrigir os valores negativos, vamos criar uma lógica.
+Fazendo um teste para verificar se o tempo é menor que zero.
+E precisamos limpar a ocorrência do `alert` com o `clearInterval(cronometro);` passando para dentro da função a variável `cronometro` que contém a referência para a execução dessa função.
+```js
+var cronometro = setInterval(function() {
+  tempo -= 1
+  if(tempo < 0) {
+    clearInterval(cronometro);
+    clearInterval(criarMosquito);
+    alert("vitoria")
+  } else {
+    document.getElementById("cronometro").innerHTML = tempo;
+  }
+}, 1000);
+```
+
+### 5 - Vitoria
+E so segui a mesma logica de fim de jogo
+
+### 6 Criação de uma pagina inicial para o jogo
+Cria uma novo arquivo `index.html`
+E copiar o conteudo do arquivo `vitoria.html`
+1 - substituir a imagem vitoria.
