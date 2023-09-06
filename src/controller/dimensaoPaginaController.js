@@ -3,6 +3,19 @@ var largura = 0;
 var vidas = 1;
 var tempo = 10;
 
+var criaMosquitoTempo = 1500;
+
+var nivel = window.location.search;
+nivel = nivel.replace("?", " ");
+
+if (nivel === "normal") {
+  criaMosquitoTempo = 1500;
+} else if (nivel === "dificil") {
+  criaMosquitoTempo = 1000;
+} else if (nivel === "profissional") {
+  criaMosquitoTempo = 750;
+}
+
 function ajustaTamanhoPalcoJogo() {
   altura = window.innerHeight;
   largura = window.innerWidth;
@@ -28,7 +41,10 @@ function posicaoRandonica() {
     document.getElementById("mosquito").remove();
     
     if(vidas > 3) {
+      window.location.href = "fim_de_jogo.html"
       window.location.href = "../src/controller/fim_de_jogo.html"
+      window.location.href = "../src/controller/fim_de_jogo.html"
+
     }else {
 			document.getElementById('v' + vidas).src = "../img/coracao_vazio.png"
 
