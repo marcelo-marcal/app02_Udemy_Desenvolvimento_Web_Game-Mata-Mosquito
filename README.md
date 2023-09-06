@@ -166,3 +166,110 @@ E so segui a mesma logica de fim de jogo
 Cria uma novo arquivo `index.html`
 E copiar o conteudo do arquivo `vitoria.html`
 1 - substituir a imagem vitoria.
+
+2 - Cria os nivel
+```html
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <img src="../img/game.png" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="d-flex justify-content-center">
+              <div class="mb-2">
+                <select class="form-control" id="nivel">
+                  <option value="">--Selecione o nível--</option>
+                  <option value="normal">Normal</option>
+                  <option value="dificil">Dificil</option>
+                  <option value="profissional">Profissional</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-center">
+                    <button type="button" class="btn btn-danger btn-lg" onclick="iniciarJogo()">Iniciar Jogo</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+```
+3 - E a logica basica para selecionar os nivel
+```html
+<script>
+    function iniciarJogo() {
+      var nivel = document.getElementById("nivel").value
+      if(nivel === "") {
+        alert("Selecione um nivel para iniciar um jogo")
+        return false
+      }
+      alert(nivel)
+    }
+  </script>
+```
+### 7 Aplicar o nivel de iniciar o jogo na aplicação:
+Na tag `<script>` a cima, vamos substituir o `alert` pelo seguinte codigo:
+Só forçando ele para ir para pagina `app.html` ele ja direciona.
+```html
+window.location.href = "app.html";
+```
+Mas precisavos passar os parametros dos nivel de jogo.
+Não seria a forma padrão mais a principio e para facio entendimento vamos fazer assim:
+Vamos adicinar o `?` e concatenar com o `+` `nivel`
+```html
+window.location.href = "app.html?" + nivel;
+```
+
+E agora dentro do `dimensaoPaginaController.js`, vamos cria a logica que vai extrair o nivel que foi en caminhado como parametro para a pagina.
+```js
+var nivel = window.location.search;
+```
+E vamos colocar um alert apenas para ver o que estamos recebendo: `alert(nivel)`. 
+Observe que irá trazer o parâmetro com o sinal `?` e queremos removê-lo. Para isso, vamos usar o `replace` e indicar o que deve ser ignorado e a partir de qual caractere o valor deve ser pego.
+```js
+alert(nivel.replace("?", " "));
+```
+
+Agora vamos novamente atribuir um valor para variavel `nivel`
+```js
+nivel = nivel.replace("?", " ");
+```
+
+Ainda no mesmo arquivo vamos criar uma variavel `criaMosquitoTempo`.
+```js
+var criaMosquitoTempo = 1500;
+``` 
+Passando ela tambem no arquivo `app.html`
+```html
+<script>
+  document.getElementById("cronometro").innerHTML = tempo;
+    
+  var criarMosquito = setInterval(function(){
+    posicaoRandonica();      
+  }, criaMosquitoTempo);
+</script>
+```
+
+E agora é só estabelecer uma condição. 
+E nossa lógica vai ficar mais ou menos assim:
+```js
+var nivel = window.location.search;
+nivel = alert(nivel.replace("?", " "));
+
+if (nivel === "normal") {
+  criaMosquitoTempo = 1500;
+} else if (nivel === "dificil") {
+  criaMosquitoTempo = 1000;
+} else if (nivel === "profissional") {
+  criaMosquitoTempo = 750;
+}
+```
+
