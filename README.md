@@ -273,3 +273,18 @@ if (nivel === "normal") {
 }
 ```
 
+### 8 Direcionando para a pagina inicial
+Basta colocar o caminho do arquivo `index.html` no evento de click, tanto no arquivo `fim_de_jogo.html`, como no arquivo `vitoria.html`.
+```html
+onclick="window.location.href = '../../src/index.html'" >Reiniciar</button>
+```
+
+### 9 Trocando o curso para uma imagem.
+No arquivo `estilo.css` vamos so colocar a seguinte linha de codigo:
+```css
+html {
+  cursor: url(../../img/mata_mosquito.png) 30 30, auto;
+}
+```
+
+Fim!
